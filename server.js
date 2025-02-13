@@ -5,6 +5,7 @@ const cors = require('cors');
 const swagger = require('./swagger');
 
 const userRouter = require("./routes/users");
+const recipeRouter = require("./routes/recipes");
 const authRouter = require("./routes/auth");
 
 const PORT = process.env.PORT || 3000;
@@ -28,4 +29,5 @@ app.listen(PORT, HOST, () => {
 app.use(express.json());
 
 app.use("/api/users", userRouter);
+app.use("/api/recipes", recipeRouter);
 app.use("/api/auth", authRouter);
