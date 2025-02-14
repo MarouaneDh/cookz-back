@@ -1,7 +1,5 @@
 const mongoose = require("mongoose");
 
-const { ObjectId } = mongoose.Schema.Types;
-
 const schema = mongoose.Schema;
 
 const userSchema = new schema({
@@ -14,6 +12,10 @@ const userSchema = new schema({
         required: true,
     },
     lastName: {
+        type: String,
+        required: true,
+    },
+    username: {
         type: String,
         required: true,
     },

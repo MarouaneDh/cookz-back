@@ -7,6 +7,7 @@ const register = async (req, res) => {
     const {
         firstName,
         lastName,
+        username,
         email,
         password,
         role,
@@ -24,6 +25,7 @@ const register = async (req, res) => {
         user = new User({
             firstName,
             lastName,
+            username,
             email,
             password,
             role,
@@ -43,9 +45,19 @@ const register = async (req, res) => {
             _id: user._id,
         };
 
+        const userResponse = {
+            _id: user._id,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            username: user.username,
+            email: user.email,
+            role: user.role,
+            phoneNumber: user.phoneNumber
+        }
+
         const token = await jwt.sign(payload, process.env.secret);
 
-        res.status(201).send({ msg: "Registered and logged in with success", user, token });
+        res.status(201).send({ msg: "Registered and logged in with success", user: userResponse, token });
     } catch (error) {
         console.log(error);
         res.status(500).send({ errors: [{ msg: "server error" }] });
@@ -77,9 +89,19 @@ const login = async (req, res) => {
             _id: user._id,
         };
 
+        const userResponse = {
+            _id: user._id,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            username: user.username,
+            email: user.email,
+            role: user.role,
+            phoneNumber: user.phoneNumber
+        }
+
         const token = await jwt.sign(payload, process.env.secret);
 
-        res.status(200).send({ msg: "Logged in with success", user, token });
+        res.status(200).send({ msg: `Hello ${user.username}, you were logged in with success`, user: userResponse, token });
     } catch (error) {
         res.status(500).send({ errors: [{ msg: "Server error" }] });
     }

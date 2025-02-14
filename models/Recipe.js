@@ -4,8 +4,32 @@ const schema = mongoose.Schema;
 
 const oneIngredient = new mongoose.Schema({
     ingredient: String,
+    state: String,
     unit: String,
     quantity: String,
+    ingredientId: String,
+});
+
+const oneReview = new mongoose.Schema({
+    review: String,
+    score: Number,
+    user: {
+        type: {
+            _id: {
+                type: String,
+                required: true,
+            },
+            username: {
+                type: String,
+                required: true,
+            }
+        },
+        required: true,
+    },
+    created_at: { type: Date },
+    updated_at: { type: Date }
+}, {
+    timestamps: true
 });
 
 const recipeSchema = new schema({
@@ -30,7 +54,7 @@ const recipeSchema = new schema({
         required: true,
     },
     reviews: {
-        type: [Object],
+        type: [oneReview],
         required: false,
     },
     score: {

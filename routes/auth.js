@@ -10,6 +10,7 @@
  *         - lastName
  *         - password
  *         - email
+ *         - username
  *       properties:
  *         role:
  *           type: string
@@ -20,6 +21,9 @@
  *         lastName:
  *           type: string
  *           description: The last name of the user
+ *         username:
+ *           type: string
+ *           description: The username of the user
  *         password:
  *           type: string
  *           description: The password of the user
@@ -33,6 +37,7 @@
  *         role: user
  *         firstName: John
  *         lastName: Doe
+ *         username: JD
  *         password: 12345678Aa*
  *         email: johndoe@gmail.com
  *         phoneNumber: +33123456789

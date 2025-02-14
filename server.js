@@ -6,6 +6,7 @@ const swagger = require('./swagger');
 
 const userRouter = require("./routes/users");
 const recipeRouter = require("./routes/recipes");
+const ingredientRouter = require("./routes/ingredients");
 const authRouter = require("./routes/auth");
 
 const PORT = process.env.PORT || 3000;
@@ -30,4 +31,5 @@ app.use(express.json());
 
 app.use("/api/users", userRouter);
 app.use("/api/recipes", recipeRouter);
+app.use("/api/ingredients", ingredientRouter);
 app.use("/api/auth", authRouter);
